@@ -9,7 +9,7 @@ from tof import tof
 from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
-from hw05 import solve_pdeq, solve_pdeq_with_init_cond
+from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model
 import unittest
 import math
 
@@ -43,16 +43,29 @@ class Assign01UnitTests(unittest.TestCase):
     #         assert abs(gt(t) - eqf(t)) <= err
     #     print("Unit Test 02: pass")
 
-    def test_03(self):
-        # solve y'=3y y(0) =1
-        print("****Unit Test 02********")
-        eq = solve_pdeq_with_init_cond(make_const(1.0), make_const(3.0))
-        assert not eq is None
+    # def test_03(self):
+    #     # solve y'=3y y(0) =1
+    #     print("****Unit Test 03********")
+    #     eq = solve_pdeq_with_init_cond(make_const(1.0), make_const(3.0))
+    #     assert not eq is None
+    #     print(eq)
+    #     eqf = tof(eq)
+    #     assert not eqf is None
+    #     err = 0.0001
+    #     gt = lambda t: math.e ** (3.0*t)
+    #     for t in range(100):
+    #         assert abs(gt(t) - eqf(t)) <= err
+    #     print("Unit Test 03: pass")
+
+    def test_04(self):
+        print("****Unit Test 04********")
+        eq = find_growth_model(make_const(20000.0), make_const(2.0), make_const(80000.0))
         print(eq)
         eqf = tof(eq)
+        print("After 12 hours: ",eqf(0.5))
         assert not eqf is None
         err = 0.0001
-        gt = lambda t: math.e ** (3.0*t)
+        gt = lambda t: 20000 * math.e ** (0.6931471805599453*t)
         for t in range(100):
             assert abs(gt(t) - eqf(t)) <= err
         print("Unit Test 03: pass")

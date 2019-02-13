@@ -46,8 +46,8 @@ def find_growth_model(p0, t, n):
     assert isinstance(p0, const)
     assert isinstance(t, const)
     assert isinstance(n, const)
-    # your code here
-    pass
+    k = math.log(n.get_val()/p0.get_val()) / t.get_val()
+    return make_prod(p0, make_e_expr(make_prod(const(k), make_pwr('t', 1.0))))
 
 ############################# Problem 3 ##############################
 
