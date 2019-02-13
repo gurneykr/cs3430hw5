@@ -20,7 +20,6 @@ from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
 
-import unittest
 import math
 
 
