@@ -9,7 +9,7 @@ from tof import tof
 from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
-from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model, radioactive_decay, c14_carbon_dating
+from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model, radioactive_decay, c14_carbon_dating, demand_elasticity
 import unittest
 import math
 
@@ -81,10 +81,16 @@ class Assign01UnitTests(unittest.TestCase):
     #     assert abs(gt(10.0) - eqf(0)) <= err
     #     print("Unit Test 05: pass")
 
-    def test_06(self):
-        print("****Unit Test 06********")
-        years = c14_carbon_dating(make_const(0.583))
-        print(years)
+    # def test_06(self):
+    #     print("****Unit Test 06********")
+    #     years = c14_carbon_dating(make_const(0.583))
+    #     print(years)
+
+    def test_07(self):
+        print("****Unit Test 07********")
+        p = make_plus(make_quot(make_const(18000.0), make_pwr('p', 1.0)), make_const(-1500.0))
+        q = demand_elasticity(p, make_const(6.0))
+        print(q)
 
     if __name__ == "__main__":
         unittest.main()
