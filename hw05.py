@@ -55,8 +55,7 @@ def radioactive_decay(lmbda, p0, t):
     assert isinstance(lmbda, const)
     assert isinstance(p0, const)
     assert isinstance(t, const)
-    # your code here
-    pass
+    return make_prod(p0 , make_e_expr(make_prod(make_prod(const(-1.0), lmbda), t )))
 
 ############################# Problem 4 ##############################
 
