@@ -61,8 +61,7 @@ def radioactive_decay(lmbda, p0, t):
 
 def c14_carbon_dating(c14_percent):
     assert isinstance(c14_percent, const)
-    # your code here
-    pass
+    return math.ceil(math.log(c14_percent.get_val())/ -0.00012)
 
 ############################# Problem 5 ##############################
 

@@ -9,7 +9,7 @@ from tof import tof
 from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
-from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model, radioactive_decay
+from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model, radioactive_decay, c14_carbon_dating
 import unittest
 import math
 
@@ -70,16 +70,21 @@ class Assign01UnitTests(unittest.TestCase):
     #         assert abs(gt(t) - eqf(t)) <= err
     #     print("Unit Test 04: pass")
 
-    def test_05(self):
-        print("****Unit Test 05********")
-        eq = radioactive_decay(make_const(0.021), make_const(8.0), make_const(10.0))
-        print(eq)
-        eqf = tof(eq)
-        assert not eqf is None
-        err = 0.0001
-        gt = lambda t: 8 * math.e ** (-0.021*t)
-        assert abs(gt(10.0) - eqf(0)) <= err
-        print("Unit Test 05: pass")
+    # def test_05(self):
+    #     print("****Unit Test 05********")
+    #     eq = radioactive_decay(make_const(0.021), make_const(8.0), make_const(10.0))
+    #     print(eq)
+    #     eqf = tof(eq)
+    #     assert not eqf is None
+    #     err = 0.0001
+    #     gt = lambda t: 8 * math.e ** (-0.021*t)
+    #     assert abs(gt(10.0) - eqf(0)) <= err
+    #     print("Unit Test 05: pass")
+
+    def test_06(self):
+        print("****Unit Test 06********")
+        years = c14_carbon_dating(make_const(0.583))
+        print(years)
 
     if __name__ == "__main__":
         unittest.main()
