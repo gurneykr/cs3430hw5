@@ -160,9 +160,7 @@ def quot_deriv(p):# f/g = (gf'-fg')/g^2 quotient rule
     assert isinstance(p, quot)
     f = p.get_num()
     g = p.get_denom()
-    if isinstance(f, const):
-        return const(0)
-    if isinstance(g, const):
+    if isinstance(f, const) and isinstance(g, const):
         return const(0)
     else:
         return quot(plus(prod(g, deriv(f)), prod(const(-1),prod(f, deriv(g)))), pwr(g, const(2.0)))

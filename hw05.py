@@ -67,7 +67,14 @@ def c14_carbon_dating(c14_percent):
 
 def demand_elasticity(demand_eq, price):
     assert isinstance(price, const)
-    return tof(demand_eq)(price.get_val())
+    fx_drv = tof(deriv(demand_eq))
+    fx = tof(demand_eq)
+
+    p = price.get_val()
+
+    n = (-1.0* p) * fx_drv(p)
+    d = fx(p)
+    return n / d
 
 def is_demand_elastic(demand_eq, price):
     assert isinstance(price, const)
