@@ -78,8 +78,12 @@ def demand_elasticity(demand_eq, price):
 
 def is_demand_elastic(demand_eq, price):
     assert isinstance(price, const)
-    # your code here
-    pass
+    # a demand equation is elastic if E(p) > 1
+    e = demand_elasticity(demand_eq, price)
+    if e > 1:
+        return True
+    else:
+        return False
 
 def expected_rev_dir(demand_eq, price, price_direction):
     assert isinstance(price, const)
