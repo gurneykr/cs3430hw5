@@ -19,7 +19,7 @@ from tof import tof
 from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
-from hw05 import solve_pdeq, solve_pdeq_with_init_cond
+
 import unittest
 import math
 
@@ -28,16 +28,17 @@ import math
 ###################### Problem 1 ########################
 
 def solve_pdeq(k1, k2):
+    #k1*y' = k2*y
     assert isinstance(k1, const)
     assert isinstance(k2, const)
-    # your code here
-    pass
+    return make_prod(make_const(1.0), make_e_expr(make_prod(make_quot(k2, k1),make_pwr('t', 1.0))))
+
 
 def solve_pdeq_with_init_cond(y0, k):
+    # solve y'=3y y(0) =1
     assert isinstance(y0, const)
     assert isinstance(k, const)
-    # your code here
-    pass
+    return make_prod(y0, make_e_expr(make_prod(k, make_pwr('t', 1.0))))
 
 ############################ Problem 2 ########################
 
