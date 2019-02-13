@@ -90,8 +90,22 @@ def expected_rev_dir(demand_eq, price, price_direction):
     assert isinstance(price_direction, const)
     assert price_direction.get_val() == 1 or \
            price_direction.get_val() == -1
-    # your code here
-    pass
+    rev = make_prod(demand_eq, make_pwr('p', 1.0))
+    print(rev)
+    original = tof(rev)(price.get_val())
+
+    if price_direction.get_val() == 1:
+        p = price.get_val() + 1.0
+    else:
+        p = price.get_val() - 1.0
+
+    new = tof(rev)(p)
+    if original-new < 1:
+        print("Revenue will increase by: ", new-original)
+    else:
+        print("Revenue will decrease by: ", math.ceil(original-new))
+
+
 
 
 

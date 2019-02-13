@@ -9,7 +9,8 @@ from tof import tof
 from deriv import logdiff
 from deriv import deriv
 from deriv import ln_deriv
-from hw05 import solve_pdeq, solve_pdeq_with_init_cond, find_growth_model, radioactive_decay, c14_carbon_dating, demand_elasticity, is_demand_elastic
+from hw05 import solve_pdeq, solve_pdeq_with_init_cond, \
+    find_growth_model, radioactive_decay, c14_carbon_dating, demand_elasticity, is_demand_elastic, expected_rev_dir
 import unittest
 import math
 
@@ -86,12 +87,17 @@ class Assign01UnitTests(unittest.TestCase):
     #     years = c14_carbon_dating(make_const(0.583))
     #     print(years)
 
-    def test_07(self):
+    # def test_07(self):
+    #     print("****Unit Test 07********")
+    #     p = make_plus(make_quot(make_const(18000.0), make_pwr('p', 1.0)), make_const(-1500.0))
+    #     q = demand_elasticity(p, make_const(6.0))
+    #     #q = is_demand_elastic(p, make_const(6.0))
+    #     print(q)
+
+    def test_08(self):
         print("****Unit Test 07********")
         p = make_plus(make_quot(make_const(18000.0), make_pwr('p', 1.0)), make_const(-1500.0))
-        q = demand_elasticity(p, make_const(6.0))
-        #q = is_demand_elastic(p, make_const(6.0))
-        print(q)
+        return expected_rev_dir(p, make_const(6.0), const(-1.0))
 
     if __name__ == "__main__":
         unittest.main()
